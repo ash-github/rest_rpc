@@ -16,6 +16,7 @@
     <ClInclude Include="..\..\rest_rpc\base\consts.h" />
     <ClInclude Include="..\..\rest_rpc\base\excetion.hpp" />
     <ClInclude Include="..\..\rest_rpc\base\function_traits.hpp" />
+    <ClInclude Include="..\..\rest_rpc\base\hash.hpp" />
     <ClInclude Include="..\..\rest_rpc\base\io_service_pool.hpp" />
     <ClInclude Include="..\..\rest_rpc\base\log.hpp" />
     <ClInclude Include="..\..\rest_rpc\base\utils.hpp" />
@@ -31,9 +32,9 @@
     <ClInclude Include="..\..\rest_rpc\client\protocol.hpp" />
     <ClInclude Include="..\..\rest_rpc\client\sync_client.hpp" />
     <ClInclude Include="..\..\rest_rpc\codec\codec.hpp" />
-    <ClInclude Include="..\..\rest_rpc\codec\codec_boost.hpp" />
-    <ClInclude Include="..\..\rest_rpc\codec\codec_kapok.hpp" />
+    <ClInclude Include="..\..\rest_rpc\codec\codec_json.hpp" />
     <ClInclude Include="..\..\rest_rpc\codec\codec_msgpack.hpp" />
+    <ClInclude Include="..\..\rest_rpc\codec\codec_xml.hpp" />
     <ClInclude Include="..\..\rest_rpc\forward.hpp" />
     <ClInclude Include="..\..\rest_rpc\rpc.hpp" />
     <ClInclude Include="..\..\rest_rpc\server.hpp" />

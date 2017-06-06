@@ -41,7 +41,7 @@ namespace timax{ namespace rpc
 		return{ boost::asio::ip::address::from_string(address), port };
 	}
 
-	auto get_topic_and_data(char const* data, size_t size) -> std::tuple<std::string, char const*, size_t>
+	inline auto get_topic_and_data(char const* data, size_t size) -> std::tuple<std::string, char const*, size_t>
 	{
 		std::string topic = data;
 		if (topic.empty())

@@ -34,9 +34,10 @@ namespace timax { namespace rpc
 	{
 		using result_type = typename boost::function_traits<Ret(Args...)>::result_type;
 		using signature_type = Ret(Args...);
+		using hash_engine = hash_tmpl<bkdr_hash<std::string>, uint64_t>;
 
 		explicit rpc_protocol_base(std::string const& name)
-			: name_(static_cast<uint64_t>(std::hash<std::string>{}(name)))
+			: name_(static_cast<uint64_t>(hash_engine{}(name)))
 		{
 		}
 
@@ -124,10 +125,11 @@ namespace timax { namespace rpc
 	{
 		static_assert(check_forward_protocol<Args...>::value, "illegal protocol parameters!");
 		using tuple_type = std::tuple<std::remove_cv_t<std::remove_reference_t<Args>>...>;
+		using hash_engine = hash_tmpl<bkdr_hash<std::string>, uint64_t>;
 
 		forward_protocol(std::string const& name)
 			: topic_name_(name)
-			, name_(static_cast<uint64_t>(std::hash<std::string>{}(name)))
+			, name_(static_cast<uint64_t>(hash_engine{}(name)))
 		{
 		}
 

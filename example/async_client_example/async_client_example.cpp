@@ -8,6 +8,7 @@ namespace client
 	TIMAX_DEFINE_PROTOCOL(sub_not_exist, double(int, std::string const&));
 }
 
+
 using tcp = boost::asio::ip::tcp;
 using async_client_t = timax::rpc::async_client<timax::rpc::msgpack_codec>;
 
@@ -102,9 +103,9 @@ int main()
 	timax::log::get().init("async_client_example.lg");
 
 	auto endpoint = timax::rpc::get_tcp_endpoint("127.0.0.1", 9000);
-	
+
 	async_client_rpc_example(endpoint);
-	//async_client_sub_example(endpoint);
+	async_client_sub_example(endpoint);
 	async_compose_example(endpoint);
 	test_timeout(endpoint);
 	std::getchar();

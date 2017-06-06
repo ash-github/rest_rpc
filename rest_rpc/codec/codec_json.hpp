@@ -1,28 +1,28 @@
 #pragma once
 
-#include <iguana/msgpack.hpp>
+#include <iguana/json.hpp>
 
 namespace timax { namespace rpc 
 {
-	struct msgpack_codec
+	struct json_codec
 	{
-		using buffer_type = std::vector<char>;
+		using buffer_type = std::string;
 
 		template <typename ... Args>
 		buffer_type pack_args(Args&& ... args) const
 		{
-			iguana::memory_buffer buffer;
+			iguana::string_stream ss;
 			auto args_tuple = std::make_tuple(std::forward<Args>(args)...);
-			iguana::msgpack::to_msgpack(buffer, args_tuple);
-			return buffer.release();
+			iguana::json::to_json(ss, args_tuple);
+			return ss.str();
 		}
 
 		template <typename T>
 		buffer_type pack(T&& t) const
 		{
-			iguana::memory_buffer buffer;
-			iguana::msgpack::to_msgpack(buffer, std::forward<T>(t));
-			return buffer.release();
+			iguana::string_stream ss;
+			iguana::json::to_json(ss, std::forward<T>(t));
+			return ss.str();
 		}
 
 		template <typename T>
@@ -31,7 +31,7 @@ namespace timax { namespace rpc
 			try
 			{
 				T t;
-				iguana::msgpack::from_msgpack(t, msg_, data, length);
+				iguana::json::from_json(t, data, length);
 				return t;
 			}
 			catch (...)
@@ -41,8 +41,5 @@ namespace timax { namespace rpc
 				throw error;
 			}
 		}
-
-	private:
-		msgpack::unpacked msg_;
 	};
 } }

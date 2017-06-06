@@ -35,11 +35,6 @@
 #include <type_traits>
 #include <future>
 
-// third-party libraries
-#include <kapok/Kapok.hpp>
-#include <msgpack.hpp>
-#include <thread_pool.hpp>
-
 namespace timax { namespace rpc
 {
 	using tcp = boost::asio::ip::tcp;
@@ -51,6 +46,7 @@ namespace timax { namespace rpc
 
 	class router_base;
 	class connection;
+	class exception;
 	using connection_ptr = std::shared_ptr<connection>;
 
 	template <typename Decode>
@@ -64,7 +60,8 @@ namespace timax { namespace rpc
 #include <rest_rpc/base/function_traits.hpp>
 #include <rest_rpc/base/consts.h>
 #include <rest_rpc/base/common.h>
+#include <rest_rpc/codec/codec.hpp>
 #include <rest_rpc/base/excetion.hpp>
 #include <rest_rpc/base/utils.hpp>
 #include <rest_rpc/base/io_service_pool.hpp>
-#include <rest_rpc/codec/codec.hpp>
+#include <rest_rpc/base/hash.hpp>

@@ -44,6 +44,7 @@ namespace timax { namespace rpc
 		auto call(tcp::endpoint endpoint, Protocol const& protocol, Args&& ... args)
 		{
 			static_assert(is_rpc_protocol<Protocol>::value, "Illegal protocol for rpc call!");
+			static_assert(is_argument_match<typename Protocol::signature_type, Args...>::value, "Arguments` types don`t match the protocol!");
 			using result_type = typename Protocol::result_type;
 			using rpc_task_t = rpc_task_alias<result_type>;
 			auto ctx = client_private_.make_rpc_context(endpoint, protocol, std::forward<Args>(args)...);

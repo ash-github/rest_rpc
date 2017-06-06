@@ -3,6 +3,7 @@
 namespace timax { namespace rpc 
 {
 	class ios_wrapper;
+	using blob_t = iguana::blob_t;
 
 	class connection : public std::enable_shared_from_this<connection>
 	{

@@ -5,9 +5,6 @@ namespace timax { namespace rpc
 	class exception
 	{
 	public:
-		MSGPACK_DEFINE(error_code_, error_message_);
-
-	public:
 		exception() noexcept
 			: error_code_(static_cast<int16_t>(error_code::OK))
 			, error_message_()
@@ -46,8 +43,10 @@ namespace timax { namespace rpc
 			return error_code_ != static_cast<int16_t>(error_code::OK);
 		}
 
-	private:
+	public:
 		int16_t			error_code_;
 		std::string		error_message_;
 	};
+
+	REFLECTION(exception, error_code_, error_message_);
 } }

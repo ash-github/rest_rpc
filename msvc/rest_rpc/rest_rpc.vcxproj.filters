@@ -103,13 +103,16 @@
     <ClInclude Include="..\..\rest_rpc\codec\codec_msgpack.hpp">
       <Filter>codec</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\rest_rpc\codec\codec_kapok.hpp">
-      <Filter>codec</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\rest_rpc\codec\codec_boost.hpp">
-      <Filter>codec</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\rest_rpc\codec\codec.hpp">
+      <Filter>codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\rest_rpc\base\hash.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\rest_rpc\codec\codec_json.hpp">
+      <Filter>codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\rest_rpc\codec\codec_xml.hpp">
       <Filter>codec</Filter>
     </ClInclude>
   </ItemGroup>

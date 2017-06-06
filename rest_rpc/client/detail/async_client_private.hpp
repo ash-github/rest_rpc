@@ -43,6 +43,7 @@ namespace timax { namespace rpc
 		using context_ptr = std::shared_ptr<context_t>;
 		using rpc_manager_t = rpc_manager<codec_policy>;
 		using sub_manager_t = sub_manager<codec_policy>;
+		using hash_engine = hash_tmpl<bkdr_hash<std::string>, uint64_t>;
 
 	public:
 		async_client_private(io_service_t& ios)
@@ -118,7 +119,7 @@ namespace timax { namespace rpc
 		io_service_t&				ios_;
 		rpc_manager_t				rpc_manager_;
 		sub_manager_t				sub_manager_;
-		std::hash<std::string>	hash_;
+		hash_engine				hash_;
 		uint64_t					pub_hash_;
 	};
 

@@ -26,8 +26,8 @@ struct foo_t
 	//}
 
 	//MSGPACK_DEFINE(a, b, c);
-	META(a, b, c);
 };
+REFLECTION(foo_t, a, b, c);
 
 void meta_with_msgpack()
 {

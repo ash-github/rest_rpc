@@ -6,9 +6,8 @@ namespace client
 	{
 		std::string hostname;
 		std::string port;
-
-		META(hostname, port);
 	};
+	REFLECTION(configure, hostname, port);
 
 	configure get_config()
 	{
@@ -17,11 +16,10 @@ namespace client
 		ss << in.rdbuf();
 
 		configure cfg = { "127.0.0.1", "9000" };
-		kapok::DeSerializer dr;
 		try
 		{
-			dr.Parse(ss.str());
-			dr.Deserialize(cfg);
+			auto file_content = ss.str();
+			iguana::json::from_json(cfg, file_content.data(), file_content.size());
 		}
 		catch (const std::exception& e)
 		{

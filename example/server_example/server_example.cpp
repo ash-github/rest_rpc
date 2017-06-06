@@ -3,8 +3,21 @@
 uint16_t port = 9000;
 size_t pool_size = std::thread::hardware_concurrency();
 
+struct person
+{
+	int age;
+	std::string name;
+};
+
+REFLECTION(person, age, name);
+
 namespace client
 {
+	int test(person const& p)
+	{
+		return p.age;
+	}
+
 	int add(int a, int b)
 	{
 		return a + b;
@@ -59,6 +72,7 @@ int main()
 	client::foo foo{};
 
 	server.register_handler("add", client::add);
+	server.register_handler("test", client::test);
 	server.register_handler("add_pub", client::add, [&server](auto conn, int r) { server.pub("sub_add", r); });
 	server.register_handler("foo_add", timax::bind(&client::foo::add, &foo));
 	server.register_handler("dummy", client::dummy);
